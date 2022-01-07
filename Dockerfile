@@ -44,3 +44,6 @@ ARG uid
 RUN useradd -G www-data,root -u $uid -d /home/admin admin
 RUN mkdir -p /home/admin/.composer && \
     chown -R admin:admin /home/admin
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN service apache2 restart

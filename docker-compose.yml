@@ -3,25 +3,35 @@ version: '3.5'
 services:
   app:
     build:
-      context: '..'
+      context: '.'
       args:
         uid: ${UID}
     container_name: web
     environment:
       - APACHE_RUN_USER=#${UID}
       - APACHE_RUN_GROUP=#${UID}
+    networks:
+      inner_network:
+        aliases:
+         - lastlink
     volumes:
       - .:/var/www/html
     ports:
-      - "8000:8000"
+      - "8000:80"
   db:
     image: mysql:5.7.16
     container_name: mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     restart: always
+    networks:
+      inner_network:
+        aliases:
+         - mysql
     ports:
       - "3306:3306"
     volumes:
       - ./docker/mysql:/var/lib/mysql
-
+networks:
+  inner_network:
+    name: app_network
