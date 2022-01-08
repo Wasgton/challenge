@@ -13,7 +13,7 @@ services:
     networks:
       inner_network:
         aliases:
-         - lastlink
+         - pharmainc
     volumes:
       - .:/var/www/html
     ports:
