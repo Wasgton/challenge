@@ -24,23 +24,28 @@ class PatientController extends Controller
 
     public function store(PatientRequest $request)
     {
-        $patient = $this->patientService->makeCategory($request->all());
-        return new PatientResource($patient);
+        return $this->patientService->createPatient($request->all());
     }
 
     public function show($id)
     {
         $patient = $this->patientService->getPatientById($id);
+
+        if($patient===null){
+            return response()->json(['message'=>'Patient not found'],404);
+        }
+
         return new PatientResource($patient);
     }
 
     public function update(PatientRequest $request, $id)
     {
+
         return $this->patientService->updatePatient($id,$request->all());
     }
 
     public function destroy($id)
     {
-        $this->patientService->destroyPatient($id);
+        return $this->patientService->destroyPatient($id);
     }
 }

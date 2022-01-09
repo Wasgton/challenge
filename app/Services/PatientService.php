@@ -25,7 +25,8 @@ class PatientService
 
     public function createPatient(array $patient)
     {
-        return $this->patientRepository->createPatient($patient);
+        $this->patientRepository->createPatient($patient);
+        return response()->json(['message'=>'Patient created'],201);
     }
 
     public function updatePatient(int $id, array $patients)
@@ -36,7 +37,7 @@ class PatientService
         }
 
         $this->patientRepository->updatePatient($Patient,$patients);
-        return response()->json(['massage'=>'Patient updated']);
+        return response()->json(['message'=>'Patient updated']);
     }
 
     public function destroyPatient(int $id)

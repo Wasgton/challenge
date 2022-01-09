@@ -15,7 +15,6 @@ class ApiAuth extends Migration
     {
         Schema::create('api_auth', function (Blueprint $table) {
             $table->id();
-            $table->string("user");
             $table->string("key")->unique();
             $table->timestamps();
         });

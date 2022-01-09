@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('remote_data:get')->dailyAt('01:35');
+         $schedule->command('remote_data:get')->dailyAt('22:00');
     }
 
     /**

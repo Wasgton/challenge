@@ -29,28 +29,37 @@ class RemoteData extends Command
 
     public function handle()
     {
+        $this->info('--------- Starting importation ---------');
+
         $maxIteration = $this->max_imports/$this->return_per_request;
 
-        for($countRequest = 0; $countRequest<$maxIteration;$countRequest++){
+        for($countRequest=1; $countRequest<=$maxIteration;$countRequest++){
 
             try {
                 $response = Http::get(URL.$this->return_per_request);
                 $data = $response->json();
 
-                $handledData = $this->handleData($data['results'][$countRequest]);
-                $photos = [
-                    'large'=>$handledData['picture_large'],
-                    'medium'=>$handledData['picture_medium'],
-                    'thumbnail'=>$handledData['picture_thumbnail']
-                ];
+                foreach($data['results'] as $data){
 
-                $photoPath = $this->handlePhotos($photos,$handledData['uuid']);
+                    $handledData = $this->handleData($data);
+                    $photos = [
+                        'large'=>$handledData['picture_large'],
+                        'medium'=>$handledData['picture_medium'],
+                        'thumbnail'=>$handledData['picture_thumbnail']
+                    ];
 
-                $handledData['picture_large'] = $photoPath['large'];
-                $handledData['picture_medium'] = $photoPath['medium'];
-                $handledData['picture_thumbnail'] = $photoPath['thumbnail'];
+                    $photoPath = $this->handlePhotos($photos,$handledData['uuid']);
 
-                $response = $this->patientService->createPatient($handledData);
+                    $handledData['picture_large'] = $photoPath['large'];
+                    $handledData['picture_medium'] = $photoPath['medium'];
+                    $handledData['picture_thumbnail'] = $photoPath['thumbnail'];
+
+                    $response = $this->patientService->createPatient($handledData);
+
+                }
+
+                $this->info('Imported: '.$countRequest*$this->return_per_request);
+                $this->info('---------------------------------------------');
 
             }catch (\Exception $e){
                 Log::error('Error store',[
@@ -61,7 +70,7 @@ class RemoteData extends Command
             }
 
         }
-        $this->info('Data imported');
+        $this->info('Data importing finished');
     }
 
     private function handleData($data)

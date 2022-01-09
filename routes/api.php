@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\ApiAuth;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,14 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-})->name('home');
+Route::apiResource('/users', 'PatientController')->names('users');
 
-Route::get('/',function(){
-    return json_encode("REST Back-end Challenge 20201209 Running");
-})->name('home');
-Route::get('/users','PatientController@index')->name('users');
-Route::get('/users/{id}','PatientController@show')->name('users.byId');
-Route::put('/users/{id}','PatientController@update')->name('users.update');
-Route::delete('/users/delete/{id}','PatientController@destroy')->name('user.destroy');
+//Route::get('/', function () {
+//    return json_encode("REST Back-end Challenge 20201209 Running");
+//})->name('home');
+
+//Route::put('/users/{id}','PatientController@update')->name('users.update');
+//Route::get('/users','PatientController@index')->name('users');
+//Route::get('/users/{id}','PatientController@show')->name('users.byId');
+//Route::delete('/users/delete/{id}','PatientController@destroy')->name('user.destroy');

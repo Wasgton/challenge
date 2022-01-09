@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return redirect()->route('home');
-});
+//
+//Route::put('users/{id}', function () {
+//    dd('entrou');
+//});

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\ApiAuth;
 use Closure;
 
 class AuthApi
@@ -15,8 +16,15 @@ class AuthApi
      */
     public function handle($request, Closure $next)
     {
-        $key = $request->header('API_KEY');
+        $apiKey = $request->header("api-key");
+        if(empty($apiKey)){
+            return response()->json(['message'=>"API Key not found"], 406);
+        }
 
+        $result = ApiAuth::where("key", $apiKey)->first();
+        if(empty($result->id)){
+            return response()->json(['message'=>"Unauthorized"], 401);
+        }
 
         return $next($request);
     }

@@ -18,7 +18,7 @@ class CreatePatientTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('title');
+            $table->string('title',5);
             $table->string('gender');
             $table->string('street');
             $table->string('number');
