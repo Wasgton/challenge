@@ -21,6 +21,7 @@ class CreatePatientTable extends Migration
             $table->string('title');
             $table->string('gender');
             $table->string('street');
+            $table->string('number');
             $table->string('city');
             $table->string('state');
             $table->string('postcode');
@@ -38,7 +39,7 @@ class CreatePatientTable extends Migration
             $table->string("picture_thumbnail");
             $table->timestamp('registered');
             $table->uuid('uuid');
-            $table->timestamp('dob')->nullable();
+            $table->dateTime('dob')->nullable();
             $table->timestamp('imported_t')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->enum('status', ["draft", "trash", "published"]);
@@ -53,7 +54,7 @@ class CreatePatientTable extends Migration
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {
-            //
+            $table->drop();
         });
     }
 }

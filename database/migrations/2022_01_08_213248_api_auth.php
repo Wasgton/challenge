@@ -28,6 +28,8 @@ class ApiAuth extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('api_auth', function (Blueprint $table) {
+            $table->drop();
+        });
     }
 }

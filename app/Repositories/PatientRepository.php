@@ -15,12 +15,17 @@ class PatientRepository
 
     public function getAllPatients()
     {
-        return $this->entity->with('addresses')->paginate(100);
+        return $this->entity->paginate(100);
     }
 
     public function getPatientById($id)
     {
         return $this->entity->where('id',$id)->first();
+    }
+
+    public function createPatient(array $patient)
+    {
+        return $this->entity->create($patient);
     }
 
     public function updatePatient(object $patient, array $patients)

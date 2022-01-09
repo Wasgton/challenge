@@ -23,6 +23,11 @@ class PatientService
         return $this->patientRepository->getPatientById($id);
     }
 
+    public function createPatient(array $patient)
+    {
+        return $this->patientRepository->createPatient($patient);
+    }
+
     public function updatePatient(int $id, array $patients)
     {
         $Patient = $this->patientRepository->getPatientById($id);

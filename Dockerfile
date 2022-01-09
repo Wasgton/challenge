@@ -14,6 +14,7 @@ RUN apt-get install -y \
     libreadline-dev \
     libfreetype6-dev \
     g++ \
+    nano \
     cron
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public

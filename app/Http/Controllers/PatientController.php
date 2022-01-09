@@ -22,6 +22,12 @@ class PatientController extends Controller
         return PatientResource::collection($patient);
     }
 
+    public function store(PatientRequest $request)
+    {
+        $patient = $this->patientService->makeCategory($request->all());
+        return new PatientResource($patient);
+    }
+
     public function show($id)
     {
         $patient = $this->patientService->getPatientById($id);

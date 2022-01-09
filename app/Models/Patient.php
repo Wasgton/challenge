@@ -30,7 +30,7 @@ class Patient extends Model
         'street',
         'number',
         'city',
-        'sttate',
+        'state',
         'postcode',
         'latitude',
         'longitude',

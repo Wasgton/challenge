@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class PatientResource extends JsonResource
 {
@@ -32,9 +33,9 @@ class PatientResource extends JsonResource
             "timezone"=>$this->timezone,
             "timezone_description"=>$this->timezone_description,
             "nat" => $this->nat,
-            "picture_large" => env('APP_URL').$this->picture_large,
-            "picture_medium" => env('APP_URL').$this->picture_medium,
-            "picture_thumbnail" => env('APP_URL').$this->picture_thumbnail,
+            "picture_large" => asset('storage').'/'.$this->picture_large,
+            "picture_medium" => asset('storage').'/'.$this->picture_medium,
+            "picture_thumbnail" => asset('storage').'/'.$this->picture_thumbnail,
             "registered" => $this->registered,
             "uuid" => $this->uuid,
             "dob" => $this->dob,
