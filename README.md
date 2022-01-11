@@ -66,7 +66,7 @@ __________________________________________________
 `
  php artisan api-key:generate
 `
-###retorno:
+### retorno:
 `
 ------------- GENERATING API-KEY ---------------
 `
@@ -87,7 +87,7 @@ __________________________________________________
 ________________________________________________
 _________________________________________________
 
-##Acessando a API
+## Acessando a API
 
 ### Endpoints:
 
@@ -109,21 +109,21 @@ _____________________________________
 _____________________________________
 ### Recuperando todos os usuarios
 
-####GET - http://localhost:8000/api/users/
+#### GET - http://localhost:8000/api/users/
 ![img_1.png](readmefiles/img_1.png)
 
 ![img_8.png](readmefiles/img_8.png)
 
 ### Consultando um usuário pela ID
 
-####GET - http://localhost:8000/api/users/{id}
+#### GET - http://localhost:8000/api/users/{id}
 ![img_11.png](readmefiles/img_11.png)
 
 ![img_10.png](readmefiles/img_10.png)
 
 ### Alterando o registro de um usuário
 
-####PUT - http://localhost:8000/api/users/{id}
+#### PUT - http://localhost:8000/api/users/{id}
 ![img_13.png](readmefiles/img_13.png)
 
 ![img_14.png](readmefiles/img_14.png)
@@ -156,7 +156,7 @@ status : string(draft,trash,published)
 _____________________________________
 ### Deletando um registro de usuário
 
-####DELETE - http://localhost:8000/api/users/{id}
+#### DELETE - http://localhost:8000/api/users/{id}
 ![img_15.png](readmefiles/img_15.png)
 
 ![img_16.png](readmefiles/img_16.png)
