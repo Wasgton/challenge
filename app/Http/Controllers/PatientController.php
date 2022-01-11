@@ -30,17 +30,14 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient = $this->patientService->getPatientById($id);
-
-        if($patient===null){
+        if(is_null($patient)){
             return response()->json(['message'=>'Patient not found'],404);
         }
-
         return new PatientResource($patient);
     }
 
     public function update(PatientRequest $request, $id)
     {
-
         return $this->patientService->updatePatient($id,$request->all());
     }
 

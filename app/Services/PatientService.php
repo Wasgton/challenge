@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\PatientRepository;
+use Carbon\Carbon;
 
 class PatientService
 {
@@ -35,6 +36,9 @@ class PatientService
         if(!$Patient){
             return response()->json(['message'=>'Patient not found'],404);
         }
+
+        $patients['dob'] = Carbon::create($patients['dob'])->toDateTimeString();
+        $patients['registered'] = Carbon::create($patients['registered'])->toDateTimeString();
 
         $this->patientRepository->updatePatient($Patient,$patients);
         return response()->json(['message'=>'Patient updated']);

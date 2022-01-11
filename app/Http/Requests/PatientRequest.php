@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PatientRequest extends FormRequest
@@ -24,33 +25,28 @@ class PatientRequest extends FormRequest
     public function rules()
     {
         return [
-            "number"=>"required|numeric",
-            "street"=>"nullable|min:3",
-            "city"=>"nullable|min:3",
-            "state"=>"nullable|min:3",
-            "country"=>"nullable|min:3",
-            "postcode"=>"nullable|min:3",
-            "latitude"=>"nullable",
-            "longitude"=>"nullable",
-            "timezone"=>"nullable",
-            "timezone_description"=>"nullable",
-            "nat" =>"nullable",
-            "title"=>"nullable|min:2|max:12",
-            'first_name' => 'nullable|min:3',
-            "last_name"=>"nullable|min:3",
-            "gender" =>"nullable|min:3",
-            "phone" =>"nullable|min:8",
-            "cell" =>"nullable|min:8",
-            "email" =>"nullable|min:11",
-            "registered" =>"nullable",
-            "uuid" =>"nullable|uuid",
-            "username" =>"nullable",
-            "dob" =>"nullable",
-            "picture_large" =>"nullable",
-            "picture_medium" =>"nullable",
-            "picture_thumbnail" =>"nullable",
-            "status" =>"nullable"
+            "number"=>"numeric",
+            "street"=>"min:3",
+            "city"=>"min:3",
+            "state"=>"min:3",
+            "country"=>"min:3",
+            "postcode"=>"min:3",
+            "timezone"=>"max:6",
+            "timezone_description"=>"required_with:timezone",
+            "title"=>"min:2|max:12",
+            'first_name' => 'min:3',
+            "last_name"=>"min:3",
+            "gender" =>"min:3",
+            "phone" =>"min:8",
+            "cell" =>"min:8",
+            "email" =>"min:11",
+            "registered" =>"date_format:Y-m-d H:i:s",
+            "uuid" =>"uuid",
+            "username" =>"min:5",
+            "dob" =>"date_format:Y-m-d H:i:s",
+            "status" =>"in:draft,trash,published"
         ];
     }
+
 
 }

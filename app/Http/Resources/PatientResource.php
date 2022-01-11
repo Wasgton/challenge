@@ -27,7 +27,7 @@ class PatientResource extends JsonResource
             "username" => $this->username,
             "street"=>$this->street,
             "city"=>$this->city,
-            "sttate"=>$this->sttate,
+            "state"=>$this->state,
             "postcode"=>$this->postcode,
             "latitude"=>$this->latitude,
             "longitude"=>$this->longitude,

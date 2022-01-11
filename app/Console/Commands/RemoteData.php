@@ -101,7 +101,6 @@ class RemoteData extends Command
             "picture_large" =>$data['picture']['large'],
             "picture_medium" =>$data['picture']['medium'],
             "picture_thumbnail" =>$data['picture']['thumbnail'],
-            "imported_t" =>Carbon::now()->toDateTimeString(),
             "status" =>"published",
         ];
     }
