@@ -1,4 +1,4 @@
-#Pharma Inc Patients API
+# Pharma Inc Patients API
 API projetada com o intuito de criar uma interface de comunicação para que seja possivel consumir os dados dos pacientes da Pharma Inc. Com ela é possivel consultar os pacientes, alterar suas informações e remover os mesmos da base de dados. 
 
 ________________________________________________
