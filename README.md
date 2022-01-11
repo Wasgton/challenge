@@ -14,7 +14,7 @@ __________________________________________________
 1. Clonar o repositório :
 
    `
-   git@lab.coodesh.com:wasgton/challenge-20201209.git pharmainc/
+   git clone https://github.com/Wasgton/challenge.git
    `
 
 2. Ingressar no diretório:
